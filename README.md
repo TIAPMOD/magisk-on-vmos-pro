@@ -1,14 +1,16 @@
-# Magisk On VMOS Pro
+# Magisk On VMOS Pro-Fix
 
 #### 介绍
 
 运行在VMOS Pro上的Magisk
 
+兼容更多设备/模块/ROM
+
 ### 兼容
 
 Android 9.0
 
-Android 7.1.2
+Android 7.1.2-64位
 
 #### 安装教程
 
@@ -16,4 +18,4 @@ Android 7.1.2
 
 2.将下载的安装包安装到虚拟机内
 
-3.进入Magisk App内→点击安装→下一步→直接安装（推荐）
+2.进入Magisk App内→点击安装→下一步→直接安装（推荐）
