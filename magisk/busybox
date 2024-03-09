@@ -40,11 +40,10 @@ EOF
   chmod 644 "$rootfs"/system/etc/init/kauditd.rc
 
   rm -f "$rootfs"
+
+  exit
 fi
 
-cp -f "${0%/*}"/libbusybox.bin.so /data/busybox || exit
-chmod 755 /data/busybox
+export PATH=/sbin/.magisk/busybox:"$PATH"
 
-/data/busybox "$@"
-
-rm /data/busybox
+"$@"
