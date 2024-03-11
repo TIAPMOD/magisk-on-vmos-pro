@@ -215,7 +215,7 @@ done
       #检查类型
       if [ -f "$path"/system/"$target" ]; then
         #检测文件
-        [ "$(basename "$target")" = .replace ] && continue 
+        [ "$(basename "$target")" = .replace ] && continue
         #备份文件
         if [ "$config" = backup ]; then
           #检查文件
@@ -228,7 +228,7 @@ done
           echo "mv -f $bin/backup/system/$target $rootfs/system/$target" >> "$bin"/backup/remove-"$module".sh
         elif [ "$config" = remove ]; then
           #修改文件
-          echo "rm -f $rootfs/system/$target" >> "$bin"/backup/remove-"$module".sh
+          [ ! -f "$path"/system/"$(dirname "$target")"/.replace ] && echo "rm -f $rootfs/system/$target" >> "$bin"/backup/remove-"$module".sh
         else
           #跳过加载
           continue
@@ -252,7 +252,7 @@ done
           #清空目录
           rm -rf "$rootfs"/system/"$target"/*
           #修改文件
-          echo -e "cp -a $bin/backup/system/$target/* $rootfs/system/$target/\nrm -rf $bin/backup/system/$target/*" >> "$bin"/backup/remove-"$module".sh
+          echo -e "rm -rf $rootfs/system/$target/*\ncp -a $bin/backup/system/$target/* $rootfs/system/$target/\nrm -rf $bin/backup/system/$target/*" >> "$bin"/backup/remove-"$module".sh
         fi
       fi
       #删除变量
