@@ -269,7 +269,7 @@ elif [ "$@" = --post-fs-data ]; then
           echo "mv -f $bin/backup/system/$target /system/$target" >> "$bin"/backup/remove-"$module".sh
         else
           #修改文件
-          echo "rm -f /system/$target" >> "$bin"/backup/remove-"$module".sh
+          [ ! -f "$path"/system/"$(dirname "$target")"/.replace ] && echo "rm -f /system/$target" >> "$bin"/backup/remove-"$module".sh
         fi
         #复制文件
         cp -af "$path"/system/"$target" /system/"$target"
@@ -290,7 +290,7 @@ elif [ "$@" = --post-fs-data ]; then
           #清空目录
           rm -rf /system/"$target"/*
           #修改文件
-          echo -e "cp -a $bin/backup/system/$target/* /system/$target/\nrm -rf $bin/backup/system/$target/*" >> "$bin"/backup/remove-"$module".sh
+          echo -e "rm -rf /system/$target/*\ncp -a $bin/backup/system/$target/* /system/$target/\nrm -rf $bin/backup/system/$target/*" >> "$bin"/backup/remove-"$module".sh
         fi
       fi
       #删除变量
